@@ -10,10 +10,6 @@ const appRoutes: Routes = [
     component: AuthComponent
   },
   {
-    path: 'navbar',
-    component: NavBarComponent
-  },
-  {
     path: '',
     component: HomeComponent
   }

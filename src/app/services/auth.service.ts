@@ -17,6 +17,6 @@ export class AuthService{
             response => token = response.text
         );
 
-        return token;   
+        return token;
     }
 }

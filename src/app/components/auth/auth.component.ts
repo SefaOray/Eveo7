@@ -8,7 +8,8 @@ import { FormsModule, FORM_DIRECTIVES }    from '@angular/forms';
   selector: 'auth-component',
   templateUrl: 'auth.component.html',
   directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES],
-  providers: [AuthService]
+  providers: [AuthService],
+  styleUrls: ['auth.component.css']
 })
 
 export class AuthComponent{
