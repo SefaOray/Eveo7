@@ -4,14 +4,13 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService{
-    private _apiService : ApiService;
 
-    constructor(){
-        this._apiService = new ApiService;
-    };
+    constructor(private apiService : ApiService){
+
+    }
 
     login(userName: string, password:string) : string{
-        var response = this._apiService.get("auth/"+ userName  + "/" + password);
+        var response = this.apiService.get("auth/"+ userName  + "/" + password);
         var token;
         response.subscribe(
             response => token = response.text

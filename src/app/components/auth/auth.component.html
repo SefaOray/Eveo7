@@ -1,6 +1,6 @@
 <div class="forms-container">
     <div class="row">
-            <form class="col s3">
+            <form class="col s3 registerForm" name="registerForm">
                 <div class="row">
                     <div class="input-field col-s4">
                         <input type="text" id="register_email"/>
@@ -19,20 +19,20 @@
                 <button class="btn waves-effect waves-light" type="submit" name="action">Register
                 </button>
             </form>
-        <div class="form loginform">
-            <form class="col s3">
+        <div class="form">
+            <form class="col s3 loginform" name="loginForm">
                 <div class="row">
                     <div class="input-field col-s4">
-                        <input type="text" id="login_email"/>
+                        <input type="text" id="login_email" [(ngModel)]="username" name="login_email"/>
                         <label for="login_email">Email address</label>
                     </div>
                     <div class="input-field col-s4">
-                        <input type="password" id="login_password"/>
+                        <input type="password" id="login_password" [(ngModel)]="password" name="login_password"/>
                         <label for="login_password">Password</label>
                     </div>
                 </div>
 
-                <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                <button class="btn waves-effect waves-light" type="submit" name="action" (click)="login()">Login
                 </button>
             </form>
         </div>

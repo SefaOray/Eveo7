@@ -4,11 +4,14 @@ import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService{
-    constructor(){};
+    
+    constructor(protected _http: Http) {
+        console.log(_http);
+    }
     baseUrl: string = "http://localhost:2680/";
-    http : Http;
+
     
     get(endpoint: string) : Observable<Response>{
-        return this.http.get(this.baseUrl + endpoint);
+        return this._http.get(this.baseUrl + endpoint);
     }
 }
