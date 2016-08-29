@@ -6,12 +6,15 @@ import { Observable }     from 'rxjs/Observable';
 export class ApiService{
     
     constructor(protected _http: Http) {
-        console.log(_http);
     }
     baseUrl: string = "http://localhost:2680/";
 
     
     get(endpoint: string) : Observable<Response>{
         return this._http.get(this.baseUrl + endpoint);
+    }
+
+    post(endpoint: string, body: any): Observable<Response>{
+        return this._http.post(this.baseUrl + endpoint,body);
     }
 }

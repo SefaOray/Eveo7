@@ -9,13 +9,20 @@ export class AuthService{
 
     }
 
-    login(userName: string, password:string) : string{
-        var response = this.apiService.get("auth/"+ userName  + "/" + password);
-        var token;
-        response.subscribe(
-            response => token = response.text
-        );
+    token: string;
+    loggedIn: boolean;
 
-        return token;
+    login(userName: string, password:string){
+        var request = this.apiService.post("Auth/login/"+ userName  + "/" + password, null);
+        
+        return request
+        .map((res) => {
+            if (res.status) {
+            this.token = res.text();
+            this.loggedIn = true;
+        }
+
+        return this.token != null;
+      });
     }
 }

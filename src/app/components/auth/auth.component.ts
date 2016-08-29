@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { ApiService } from '../../services/api.service';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { FormsModule, FORM_DIRECTIVES }    from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -14,14 +15,29 @@ import { FormsModule, FORM_DIRECTIVES }    from '@angular/forms';
 })
 
 export class AuthComponent{
-    constructor(private authSerive: AuthService){
+    constructor(private authSerive: AuthService, private router: Router){
 
     }
 
     username: string;
     password: string;
-    
+    loginErr: string;
+    username_register: string;
+    password_register: string;
+    password_register_repeat: string;
+
     login(){
-      var result = this.authSerive.login(this.username,this.password);
+      var request = this.authSerive.login(this.username,this.password);
+
+      request.subscribe((result) => {
+          this.router.navigate(['characterList']);
+      },
+      (err) => {
+        if(err._body)
+        {
+          var responseMsg = JSON.parse(err._body);
+          this.loginErr = responseMsg.message;
+        }
+      })
     }
 }
