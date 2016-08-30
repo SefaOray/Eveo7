@@ -1,0 +1,7 @@
+vay api keyler ha
+<form [formGroup] = "apiKeyForm">
+<input type="text" id="keyId" ngControl="keyId" name="keyId" placeholder="Key ID"/>
+<input type="text" id="verificationCode" ngControl="verificationCode" name="verificationCode" placeholder="Verification Code"/>
+<input type="text" id="name" ngControl="name" name="name" placeholder="Name (Optional)"/>
+</form>
+ <button class="btn waves-effect waves-light" type="submit" name="action" (click)="addKey()">Add API key</button>

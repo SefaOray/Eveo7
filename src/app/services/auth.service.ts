@@ -1,19 +1,19 @@
-import { ApiService } from "./api.service"
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class AuthService{
 
-    constructor(private apiService : ApiService){
-
+    constructor(private http: Http){
+        this.loggedIn = false;
     }
-
+    baseAddress = 'http://localhost:2680/';
     token: string;
     loggedIn: boolean;
 
     login(userName: string, password:string){
-        var request = this.apiService.post("Auth/login/"+ userName  + "/" + password, null);
+        var request = this.http.post(this.baseAddress + "Auth/login/"+ userName  + "/" + password, null);
         
         return request
         .map((res) => {
@@ -24,5 +24,14 @@ export class AuthService{
 
         return this.token != null;
       });
+
+    }
+
+    logout(){
+        if(!this.loggedIn)
+            return;
+        
+        this.token = "";
+        this.loggedIn = false;
     }
 }

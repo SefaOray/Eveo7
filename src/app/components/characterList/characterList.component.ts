@@ -29,12 +29,11 @@ export class CharacterListComponent{
 
         request.subscribe((response) => {
             this.characters = response;
+
+            if(this.characters.length == 0)
+            {
+                this.router.navigate(["apiKeyList"]);
+            }
         });
-
-        if(this.characters.length == 0)
-        {
-            this.router.navigate(["keyManagement"]);
-        }
     }
-
 }

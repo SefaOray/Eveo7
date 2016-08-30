@@ -7,6 +7,7 @@ import { AuthService} from '../services/auth.service';
 export class HttpClient {
   private http: Http;
   private auth: AuthService;
+  baseUrl: string = "http://localhost:2680/";
   constructor(http: Http, auth: AuthService) {
     this.http = http;
     this.auth = auth;
@@ -19,7 +20,7 @@ export class HttpClient {
   get(url) {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.get(url, {
+    return this.http.get(this.baseUrl + url, {
       headers: headers
     });
   }
@@ -27,7 +28,7 @@ export class HttpClient {
   post(url, data) {
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.post(url, data, {
+    return this.http.post(this.baseUrl + url, data, {
       headers: headers
     });
   }

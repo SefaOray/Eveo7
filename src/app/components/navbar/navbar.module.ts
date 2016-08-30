@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { NavBarComponent } from '../navbar/navbar.component';
 
+
 @NgModule({
     imports: [
     ],
@@ -10,4 +11,6 @@ import { NavBarComponent } from '../navbar/navbar.component';
     bootstrap: [NavBarComponent]
 })
 
-export class NavBarModule{}
+export class NavBarModule{
+
+}

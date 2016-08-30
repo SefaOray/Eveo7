@@ -4,6 +4,7 @@ import { CharacterListComponent } from "../characterList/characterList.component
 import { AppComponent } from "./app.component"
 import { NavBarComponent } from "../navbar/navbar.component";
 import { HomeComponent } from "../home/home.component";
+import { ApiKeyListComponent } from "../apiKeyList/apiKeyList.component";
 
 const appRoutes: Routes = [
   {
@@ -13,6 +14,10 @@ const appRoutes: Routes = [
   {
     path: 'characterList',
     component: CharacterListComponent
+  },
+  {
+    path: 'apiKeyList',
+    component: ApiKeyListComponent
   },
   {
     path: '',

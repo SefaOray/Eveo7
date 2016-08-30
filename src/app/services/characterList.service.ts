@@ -11,7 +11,7 @@ export class CharacterListService{
     }
 
     getAccountCharacters(){
-        return this.httpClient.get('/accountListing/listCharacters')
+        return this.httpClient.get('accountListing/listCharacters')
         .map((res) => {
             return res.json()
         });
