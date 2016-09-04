@@ -16,4 +16,11 @@ export class CharacterListService{
             return res.json()
         });
     }
+
+    getCharactersInKey(keyId: number){
+        return this.httpClient.get('accountListing/listCharactersInKey/' + keyId)
+        .map((res) => {
+            return res.json()
+        });
+    }
 }

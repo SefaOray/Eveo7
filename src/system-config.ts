@@ -13,6 +13,15 @@ const map: any = {
 
 /** User packages configuration. */
 const packages: any = {
+    'materialize-css': {
+    "format": "global",
+    "main": "dist/js/materialize",
+    "defaultExtension": "js"
+  },
+  'angular2-materialize': {
+    "main": "dist/index",
+    "defaultExtension": "js"
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,10 +61,14 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
-    'main': 'main.js'
+    'main': 'main.js',
+       "materialize-css": "vendor/materialize-css",
+   "angular2-materialize": "vendor/angular2-materialize",
+   "jquery": "vendor/jquery"
   },
   packages: cliSystemConfigPackages
 });
+
 
 // Apply the user's configuration.
 System.config({ map, packages });

@@ -12,5 +12,4 @@ import { NavBarComponent } from '../navbar/navbar.component';
 })
 
 export class NavBarModule{
-
 }

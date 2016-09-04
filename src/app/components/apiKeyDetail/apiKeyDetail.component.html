@@ -1,0 +1,22 @@
+<div class="KeyDetail">
+    <div class="KeyName" [hidden]="!apiKey.name">{{apiKey.name}}</div>
+    <div class="KeyName" [hidden] = "apiKey.name">#{{apiKey.id}}</div>
+    <div class="KeyInfo">
+        <div class="input-field col s12">
+          <input disabled value="{{apiKey.keyId}}" id="keyId" type="text" class="validate">
+          <label for="keyId">Key ID</label>
+        </div>
+        <div class="input-field col s12">
+          <input disabled value="{{apiKey.verificationCode}}" id="vCode" type="text" class="validate">
+          <label for="vCode">Verification code</label>
+        </div>
+    </div>
+    <ul materialize="collapsible" class="CharacterList collapsible" data-collapsible="expandable">
+        <li>
+        <div class="chacter collapsible-header" (click)="toggle()">
+            <i class="medium material-icons">contacts</i> Characters
+        </div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        </li>
+    </ul>
+</div>

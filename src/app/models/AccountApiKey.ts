@@ -1,5 +1,6 @@
 export class AccountApiKey{
-    KeyId: string;
-    VerificationCode: string;
-    Name: string;
+    keyId: string;
+    verificationCode: string;
+    name: string;
+    id: number;
 }

@@ -24,7 +24,7 @@ export class ApiKeyService{
     }
 
     AddApiKeyToAccount(keyId, verificationCode, name){
-        var request = this.httpClient.post('accountListing/AddKey/'+ keyId + "/" + verificationCode + "/" + name,null);
+        var request = this.httpClient.post('apiKey/addKey/'+ keyId + "/" + verificationCode + "/" + name,null);
 
         return request.map((res) => {
             if(res.ok){

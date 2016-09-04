@@ -5,12 +5,13 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import { FormsModule, FORM_DIRECTIVES,FormControl,Validators, FormBuilder, FormGroup, REACTIVE_FORM_DIRECTIVES }    from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountApiKey} from '../../models/AccountApiKey'
+import { ApiKeyDetailComponent} from '../apiKeyDetail/apiKeyDetail.component'
 
 @Component({
   moduleId: module.id,
   selector: 'apiKeyList-component',
   templateUrl: 'apiKeyList.component.html',
-  directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, ApiKeyDetailComponent],
   providers: [ApiKeyService, FormBuilder],
   styleUrls: ['apiKeyList.component.css']
 })
@@ -18,23 +19,19 @@ import { AccountApiKey} from '../../models/AccountApiKey'
 export class ApiKeyListComponent{
 
     formModel: AccountApiKey;
-    apiKeyForm: FormGroup;
-    constructor(private apiKeyService : ApiKeyService, private authService: AuthService, private router: Router, fb: FormBuilder) {
-        //this.keyId = new FormControl('',Validators.required);
-        //this.verificationCode = new FormControl('',Validators.required);
-        //this.name = new FormControl('', Validators.maxLength(50));
-        this.formModel = new AccountApiKey;
-        this.apiKeyForm = fb.group({
-            'keyId': new FormControl(this.formModel.KeyId,Validators.required),
-            'verificationCode': new FormControl(this.formModel.VerificationCode, Validators.required)
-        });
+    constructor(private apiKeyService : ApiKeyService, private authService: AuthService, private router: Router) {
+        this.formModel = new AccountApiKey();
     }
 
     ApiKeys: any;
+    err: string;
 
     ngOnInit(){
         if(!this.authService.loggedIn)
+        {
             this.router.navigate(['auth']);
+            return;
+        }
 
         var response = this.apiKeyService.GetAccountApiKeyList().subscribe(
             (res) => {this.ApiKeys = res},
@@ -42,18 +39,19 @@ export class ApiKeyListComponent{
     }
 
     addKey(){
-        if(!this.apiKeyForm.controls['keyId'].valid)
+        if(!this.formModel.keyId || !this.formModel.verificationCode)
             return;
 
-        var request = this.apiKeyService.AddApiKeyToAccount(this.formModel.KeyId, this.formModel.VerificationCode, this.formModel.Name);
+        var request = this.apiKeyService.AddApiKeyToAccount(this.formModel.keyId, this.formModel.verificationCode, this.formModel.name);
 
         request.subscribe((res) => {
             if(res)
             {
+                this.err = undefined;
                 this.ApiKeys.push(res);
             }
         }, (err) => {
-            console.log(err);
+            this.err = err._body
         });
     }
 

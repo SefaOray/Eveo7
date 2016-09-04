@@ -5,6 +5,8 @@ import { APP_ROUTER_PROVIDERS } from './app/components/app/app.routing';
 import {HTTP_PROVIDERS} from '@angular/http';
 import { AuthService } from './app/services/auth.service'
 import { HttpClient} from './app/utils/httpClient'
+import "materialize-css";
+import "angular2-materialize";
 
 if (true) {
   enableProdMode();

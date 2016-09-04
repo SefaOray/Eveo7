@@ -16,4 +16,8 @@ export class NavBarComponent{
         this.auth.logout();
         this.router.navigate(['characterList']);
     }
+
+    myKeys(){
+        this.router.navigate(['apiKeyList']);
+    }
 } 

@@ -4,3 +4,6 @@
 
 /// <reference path="../typings/index.d.ts" />
 declare var module: { id: string };
+interface JQuery {
+    collapsible(options?:any):JQuery;
+}   
