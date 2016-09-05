@@ -23,4 +23,19 @@ export class CharacterListService{
             return res.json()
         });
     }
+
+    addCharacterToAccount(accountKeyId: number, characterId: number){
+        return this.httpClient.post('accountListing/addCharacterToAccount/' + accountKeyId + '/' + characterId,null)
+        .map((res) => {
+            return res.ok;
+        });
+    }
+
+    removeCharacterFromAccount(accountKeyId: number, characterId: number)
+    {
+        return this.httpClient.post('accountListing/removeCharacterFromAccount/' + accountKeyId + '/' + characterId,null)
+        .map((res) => {
+            return res.ok;
+        });
+    }
 }

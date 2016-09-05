@@ -13,12 +13,13 @@
     </div>
     <ul materialize="collapsible" class="CharacterList collapsible" data-collapsible="expandable">
         <li>
-        <div class="chacter collapsible-header" (click)="toggle()">
-            <i class="medium material-icons">contacts</i> Characters
-        </div>
-        <div class="collapsible-body" *ngFor="let item of characters">
-            <character-selector [character]="item"></character-selector>
-        </div>
+            <div class="chacter collapsible-header" (click)="toggle()">
+                <i class="medium material-icons">contacts</i> Characters
+            </div>
+            
+            <div class="collapsible-body" *ngFor="let item of characters">
+                <character-selector [character]="item" [keyId]="apiKey.keyId"></character-selector>
+            </div>
         </li>
     </ul>
 </div>

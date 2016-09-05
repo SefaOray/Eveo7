@@ -13,9 +13,22 @@ import { AccountCharacter} from '../../models/AccountCharacter'
 })
 
 export class CharacterSelectorComponent{
+    constructor(private characterListService: CharacterListService) {
 
+    }
     @Input()
     character: AccountCharacter;
+    @Input()
+    keyId: number;
 
-
+    toggle(){
+      if(this.character.isAdded)
+      {
+          this.characterListService.addCharacterToAccount(this.keyId,this.character.id).subscribe();
+      }
+      else
+      {
+          this.characterListService.removeCharacterFromAccount(this.keyId,this.character.id).subscribe();
+      }
+    }
 }

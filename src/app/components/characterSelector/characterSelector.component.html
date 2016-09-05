@@ -1,7 +1,7 @@
   <div class="switch">
     <label>
       Off
-      <input type="checkbox" [(ngModel)]="character.isAdded">
+      <input type="checkbox" [(ngModel)]="character.isAdded" (click)="toggle()">
       <span class="lever"></span>
       On
     </label> {{character.name}}

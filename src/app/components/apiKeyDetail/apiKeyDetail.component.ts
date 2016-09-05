@@ -29,10 +29,11 @@ export class ApiKeyDetailComponent{
 
     toggle(){
       if(!this.initialized){
-        this.initialized = true;
-        this.characterListService.getCharactersInKey(this.apiKey.id).subscribe((res)=> {
-          this.characters = res;
-        }, (err) => {console.log(err)});
+
+            this.characterListService.getCharactersInKey(this.apiKey.id).subscribe((res)=> {
+                          this.initialized = true;
+              this.characters = res;
+          }, (err) => {console.log(err)});
       }
     }
 }

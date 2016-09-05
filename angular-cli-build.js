@@ -17,8 +17,9 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'jquery/dist/*',
+      'materialize-css/dist/**/*',
       'angular2-materialize/dist/*',
-      'materialize-css/dist/**/*'
+      
     ]
   });
 };
