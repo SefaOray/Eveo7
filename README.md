@@ -1,5 +1,3 @@
 # Eveo7
 
-Frontend code for Eveo7.
-
-Angular2 and stuff.
+This repo is obsolete. Contains some old code for eveo7 angular app. 
